@@ -39,3 +39,16 @@ Once the image is built, run the container:
     docker run -p 5000:5000 pdf-unlocker-app
    ```
 Your app should now be accessible at `http://localhost:5000`.
+
+##Usage
+
+**Unlocking a PDF**
+
+- Visit the web application's URL.
+- Click "Choose File" and select a password-protected PDF.
+- Enter the password in the text field provided.
+- Click "Unlock" to download the unlocked PDF.
+
+##Contributing
+
+Contributions to this project are welcome! Please fork the repository and submit a pull request with your proposed changes.
