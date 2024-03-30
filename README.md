@@ -23,3 +23,7 @@ This PDF Unlocker is a web application that allows users to upload password-prot
 
 2. **Build the Docker Image**
 
+Navigate to the project directory where the Dockerfile is located and run:
+
+   ```bash
+   docker build -t pdf-unlocker-app .
