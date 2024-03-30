@@ -40,7 +40,7 @@ Once the image is built, run the container:
    ```
 Your app should now be accessible at `http://localhost:5000`.
 
-##Usage
+## Usage
 
 **Unlocking a PDF**
 
