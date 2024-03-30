@@ -20,3 +20,6 @@ This PDF Unlocker is a web application that allows users to upload password-prot
    ```bash
    git clone https://your-repository-url.git
    cd your-project-directory
+
+2. **Build the Docker Image**
+
