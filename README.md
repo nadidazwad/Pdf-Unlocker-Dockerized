@@ -52,3 +52,10 @@ Your app should now be accessible at `http://localhost:5000`.
 ## Contributing
 
 Contributions to this project are welcome! Please fork the repository and submit a pull request with your proposed changes.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+This README provides a basic overview, instructions for local setup and deployment, and a simple contribution guide. Feel free to expand it with more detailed usage instructions, screenshots, and any other information you find relevant.
