@@ -49,6 +49,6 @@ Your app should now be accessible at `http://localhost:5000`.
 - Enter the password in the text field provided.
 - Click "Unlock" to download the unlocked PDF.
 
-##Contributing
+## Contributing
 
 Contributions to this project are welcome! Please fork the repository and submit a pull request with your proposed changes.
