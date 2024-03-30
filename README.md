@@ -20,19 +20,12 @@ This PDF Unlocker is a web application that allows users to upload password-prot
     ```bash
    git clone https://your-repository-url.git
    cd your-project-directory
-
+    ```
 2. **Build the Docker Image**
 
 Navigate to the project directory where the Dockerfile is located and run:
 
    ```bash
    docker build -t pdf-unlocker-app .
+   ```
 
-3. **Run the Container**
-
-Once the image is built, run the container:
-
-    ```bash
-    docker run -p 5000:5000 pdf-unlocker-app
-
-Your app should now be accessible at `http://localhost:5000`.
