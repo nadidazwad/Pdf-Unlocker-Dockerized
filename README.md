@@ -17,7 +17,7 @@ This PDF Unlocker is a web application that allows users to upload password-prot
 
 1. **Clone the Repository**
 
-   ```bash
+    ```bash
    git clone https://your-repository-url.git
    cd your-project-directory
 
