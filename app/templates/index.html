@@ -16,63 +16,61 @@
         }
         
         #error-message {
-        color: #ff6b6b; /* Bright red color for visibility */
-        margin-top: 10px; /* Space between error message and password input */
-        font-size: 1.2em; /* Increase font size for better readability */
+        color: #ff6b6b;
+        margin-top: 10px;
+        font-size: 1.2em;
     }
 
-    /* Make sure the error message is not hidden by any other CSS rules. 
-       You can use !important to ensure this style is applied, but use it as a last resort. */
     #error-message {
-        color: #ff6b6b !important; /* This makes sure the color is applied */
+        color: #ff6b6b !important;
     }
         
         .container {
             border: 3px solid #294B7D;
-            padding: 100px; /* Increased padding for more space inside the border */
+            padding: 100px;
             margin: auto;
             box-shadow: 0px 0px 10px 0px #294B7D;
             background-color: #000;
-            max-width: 600px; /* Adjust width as necessary */
+            max-width: 600px;
         }
         h1 {
             color: #fff;
             text-align: center;
-            margin-bottom: 50px; /* More space below the title */
-            font-size: 2.5em; /* Larger font size for title */
+            margin-bottom: 50px;
+            font-size: 2.5em;
         }
         .file-input-container {
-            margin-bottom: 30px; /* More space between file input and password field */
+            margin-bottom: 30px;
         }
         .file-input-button {
             background-color: #294B7D;
             color: #fff;
-            padding: 15px 30px; /* Larger button padding */
+            padding: 15px 30px;
             border: none;
-            font-size: 1.2em; /* Larger font size for buttons */
-            border: 1px solid #294B7D; /* Add border to the button */
+            font-size: 1.2em;
+            border: 1px solid #294B7D;
         }
         .file-name {
             color: #aaa;
-            display: block; /* File name on a new line */
-            margin-top: 25px; /* Space between button and file name text */
-            font-size: 1.2em; /* Larger font size for file name */
+            display: block;
+            margin-top: 25px;
+            font-size: 1.2em;
         }
         input[type="password"], 
         input[type="submit"] {
-            width: calc(100% - 20px); /* Account for padding */
-            padding: 15px 10px; /* Larger padding for input */
+            width: calc(100% - 20px);
+            padding: 15px 10px;
             margin-top: 20px;
-            font-size: 1.2em; /* Larger font size for inputs */
-            border: 1px solid #294B7D; /* Blue border for input fields */
+            font-size: 1.2em;
+            border: 1px solid #294B7D;
         }
         input[type="password"] {
-            background-color: #000; /* Black background */
-            color: #fff; /* White text */
-            margin-bottom: 20px; /* More space between password field and button */
+            background-color: #000;
+            color: #fff;
+            margin-bottom: 20px;
         }
         input[type="password"]::placeholder {
-            color: #ddd; /* Lighter placeholder text for better visibility */
+            color: #ddd;
         }
         input[type="submit"] {
             background-color: #294B7D;
@@ -97,7 +95,6 @@
             <input id="pdf_file" type="file" name="pdf_file" required onchange="document.querySelector('.file-name').textContent = this.files[0].name">
             
             <input type="password" name="password" placeholder="Enter PDF password" required>
-            <!-- Error message placeholder moved here, right after the password input -->
             <div id="error-message"></div>
             
             <input type="submit" value="Unlock">
@@ -105,7 +102,7 @@
     </div>
     <script>
         document.getElementById('unlock-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent the default form submission
+            e.preventDefault();
     
             var formData = new FormData(this);
             fetch('/unlock', {
@@ -115,14 +112,14 @@
             .then(response => response.json())
             .then(data => {
                 var errorMessageDiv = document.getElementById('error-message');
-                errorMessageDiv.textContent = ''; // Clear existing messages
+                errorMessageDiv.textContent = '';
     
                 if (data.flash) {
-                    errorMessageDiv.textContent = data.flash[0]; // Display the error message
+                    errorMessageDiv.textContent = data.flash[0];
                 }
     
                 if (data.redirect) {
-                    window.location.href = data.redirect; // Redirect on success
+                    window.location.href = data.redirect;
                 }
             })
             .catch(error => {
