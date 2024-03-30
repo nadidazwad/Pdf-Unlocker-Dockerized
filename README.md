@@ -17,10 +17,13 @@ This PDF Unlocker is a web application that allows users to upload password-prot
 
 1. **Clone the Repository**
 
-    ```bash
-   git clone https://your-repository-url.git
+Use the following commands:
+
+   ```bash
    cd your-project-directory
-    ```
+   git clone https://your-repository-url.git
+   ```
+
 2. **Build the Docker Image**
 
 Navigate to the project directory where the Dockerfile is located and run:
