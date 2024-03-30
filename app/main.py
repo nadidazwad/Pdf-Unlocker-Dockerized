@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, send_file, flash, redirect, url_for, jsonify, send_from_directory
-import fitz  # PyMuPDF
+import fitz
 
 app = Flask(__name__)
 app.secret_key = b'\xd8`\xc0+\x95,\xdcO\xddQ8\xab\xf6\x06\x9f\x86\x1fl\xe1\x94\xba\x90;H'
