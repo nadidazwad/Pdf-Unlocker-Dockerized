@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unlock PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #error-message {
+        color: #ff6b6b; /* Bright red color for visibility */
+        margin-top: 10px; /* Space between error message and password input */
+        font-size: 1.2em; /* Increase font size for better readability */
+    }
+
+    /* Make sure the error message is not hidden by any other CSS rules. 
+       You can use !important to ensure this style is applied, but use it as a last resort. */
+    #error-message {
+        color: #ff6b6b !important; /* This makes sure the color is applied */
+    }
+        
+        .container {
+            border: 3px solid #294B7D;
+            padding: 100px; /* Increased padding for more space inside the border */
+            margin: auto;
+            box-shadow: 0px 0px 10px 0px #294B7D;
+            background-color: #000;
+            max-width: 600px; /* Adjust width as necessary */
+        }
+        h1 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 50px; /* More space below the title */
+            font-size: 2.5em; /* Larger font size for title */
+        }
+        .file-input-container {
+            margin-bottom: 30px; /* More space between file input and password field */
+        }
+        .file-input-button {
+            background-color: #294B7D;
+            color: #fff;
+            padding: 15px 30px; /* Larger button padding */
+            border: none;
+            font-size: 1.2em; /* Larger font size for buttons */
+            border: 1px solid #294B7D; /* Add border to the button */
+        }
+        .file-name {
+            color: #aaa;
+            display: block; /* File name on a new line */
+            margin-top: 25px; /* Space between button and file name text */
+            font-size: 1.2em; /* Larger font size for file name */
+        }
+        input[type="password"], 
+        input[type="submit"] {
+            width: calc(100% - 20px); /* Account for padding */
+            padding: 15px 10px; /* Larger padding for input */
+            margin-top: 20px;
+            font-size: 1.2em; /* Larger font size for inputs */
+            border: 1px solid #294B7D; /* Blue border for input fields */
+        }
+        input[type="password"] {
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+            margin-bottom: 20px; /* More space between password field and button */
+        }
+        input[type="password"]::placeholder {
+            color: #ddd; /* Lighter placeholder text for better visibility */
+        }
+        input[type="submit"] {
+            background-color: #294B7D;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #3a5ea0;
+        }
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unlock PDF</h1>
+        <form id="unlock-form" method="post" enctype="multipart/form-data">
+            <label class="file-input-button" for="pdf_file">Choose File</label>
+            <span class="file-name">No File Chosen</span>
+            <input id="pdf_file" type="file" name="pdf_file" required onchange="document.querySelector('.file-name').textContent = this.files[0].name">
+            
+            <input type="password" name="password" placeholder="Enter PDF password" required>
+            <!-- Error message placeholder moved here, right after the password input -->
+            <div id="error-message"></div>
+            
+            <input type="submit" value="Unlock">
+        </form>
+    </div>
+    <script>
+        document.getElementById('unlock-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+    
+            var formData = new FormData(this);
+            fetch('/unlock', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                var errorMessageDiv = document.getElementById('error-message');
+                errorMessageDiv.textContent = ''; // Clear existing messages
+    
+                if (data.flash) {
+                    errorMessageDiv.textContent = data.flash[0]; // Display the error message
+                }
+    
+                if (data.redirect) {
+                    window.location.href = data.redirect; // Redirect on success
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('error-message').textContent = 'Incorrect Password!';
+            });
+        });
+    </script>    
+</body>
+</html>
