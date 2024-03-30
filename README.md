@@ -28,4 +28,11 @@ Navigate to the project directory where the Dockerfile is located and run:
    ```bash
    docker build -t pdf-unlocker-app .
    ```
+3. **Run the Container**
 
+Once the image is built, run the container:
+
+    ```bash
+    docker run -p 5000:5000 pdf-unlocker-app
+    ```
+Your app should now be accessible at `http://localhost:5000`.
